@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup PHP 7.4
         uses: shivammathur/setup-php@v2
         with:
@@ -24,7 +24,7 @@ jobs:
       - name: Zip vendor
         run: zip -r phpspreadsheet_vendor.zip vendor/
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: phpspreadsheet-vendor
           path: phpspreadsheet_vendor.zip
