@@ -1,0 +1,30 @@
+name: Build PhpSpreadsheet vendor
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup PHP 7.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+      - name: Create composer.json
+        run: |
+          echo '{
+            "require": {
+              "phpoffice/phpspreadsheet": "^1.29"
+            },
+            "config": {
+              "platform": { "php": "7.4" }
+            }
+          }' > composer.json
+      - name: Install
+        run: composer install --no-dev --no-scripts --no-progress
+      - name: Zip vendor
+        run: zip -r phpspreadsheet_vendor.zip vendor/
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: phpspreadsheet-vendor
+          path: phpspreadsheet_vendor.zip
