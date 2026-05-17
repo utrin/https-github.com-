@@ -13,7 +13,7 @@ jobs:
         run: |
           echo '{
             "require": {
-              "phpoffice/phpspreadsheet": "^2.4.5"
+              "phpoffice/phpspreadsheet": "^3.10.5"
             },
             "config": {
               "platform": { "php": "8.2" }
