@@ -5,18 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup PHP 7.4
+      - name: Setup PHP 8.2
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.2'
       - name: Create composer.json
         run: |
           echo '{
             "require": {
-              "phpoffice/phpspreadsheet": "^1.29"
+              "phpoffice/phpspreadsheet": "^2.4.5"
             },
             "config": {
-              "platform": { "php": "7.4" }
+              "platform": { "php": "8.2" }
             }
           }' > composer.json
       - name: Install
